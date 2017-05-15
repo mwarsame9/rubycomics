@@ -16,6 +16,7 @@ end
 group :test do
   gem 'capybara'
   gem 'rspec'
+  gem 'shoulda-callback-matchers'
   gem 'shoulda-matchers'
   gem 'timecop'
 end

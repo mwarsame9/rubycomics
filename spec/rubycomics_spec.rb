@@ -5,7 +5,11 @@ RSpec.describe Rubycomics do
     expect(Rubycomics::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  describe Rubycomics::User do
+    it { should have_many :pages}
+  end
+
+  describe Rubycomics::Page do
+    it { should belong_to :user}
   end
 end
