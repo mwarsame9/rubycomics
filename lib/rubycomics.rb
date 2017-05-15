@@ -9,8 +9,9 @@ module Rubycomics
 
   class Page < ActiveRecord::Base
     belongs_to :user
-    include Paperclip::Glue
+    include ::Paperclip::Glue
     has_attached_file(:page_img)
+    validates_attachment :page_img, content_type: { content_type: /\Aimage\/.*\Z/ }
   end
 
 end

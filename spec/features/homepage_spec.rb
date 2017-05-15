@@ -3,7 +3,7 @@ require_relative 'feature_helper'
 context 'non logged in user' do
   it 'shows an index of comics on website' do
     visit '/'
-    expect(page).to have_content('All Comics')
+    expect(page).to have_content('All Pages')
   end
 
   it 'gives user the option to login' do
@@ -18,7 +18,7 @@ context 'non logged in user' do
 
   it 'allows user to view individual pages of a comic' do
     visit '/'
-    find('.page').first click
+    all('.page').first click_on
     expect(page).to have_selector('#page')
   end
 end
@@ -41,11 +41,11 @@ context 'logged in user' do
 
   it 'allows user to add comics' do
     visit '/'
-    page_count = find('.page').count
+    page_count = all('.page').count
     visit '/pages/new'
     expect(page).to have_content('Add New Page')
-    # upload image
+    fill_in 'page_img', with: File.expand_path('../assets/happy.jpg')
     click_on 'Add New Page'
-    expect(find('.page').count).to eq page_count + 1
+    expect(all('.page').count).to eq page_count + 1
   end
 end
