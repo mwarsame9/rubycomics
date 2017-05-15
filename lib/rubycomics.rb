@@ -9,6 +9,8 @@ module Rubycomics
 
   class Page < ActiveRecord::Base
     belongs_to :user
+    include Paperclip::Glue
+    has_attached_file(:page_img)
   end
 
 end

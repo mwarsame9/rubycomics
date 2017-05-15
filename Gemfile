@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
+gem 'activesupport'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 gem 'pg'
 gem 'pry'
 gem 'pry-byebug'

@@ -10,16 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515174519) do
+ActiveRecord::Schema.define(version: 20170515202110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "pages", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "page_img_file_name"
+    t.string "page_img_content_type"
+    t.integer "page_img_file_size"
+    t.datetime "page_img_updated_at"
     t.index ["user_id"], name: "index_pages_on_user_id"
   end
 
