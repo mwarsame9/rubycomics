@@ -1,12 +1,19 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'sinatra-flash'
+require 'sinatra/flash'
+require 'rubycomics'
 
 if development?
   require 'sinatra/reloader'
   also_reload('**/*.rb')
 end
+class RubycomicsApp < Sinatra::Application
 
-get('/') do
-  erb(:index)
+  def params
+    super.symbolize
+  end
+
+  get('/') do
+    erb(:index)
+  end
 end

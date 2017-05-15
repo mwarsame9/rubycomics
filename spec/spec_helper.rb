@@ -1,4 +1,4 @@
-rrequire 'bundler/setup'
+require 'bundler/setup'
 require_relative '../boot.rb'
 require 'shoulda-matchers'
 require 'shoulda-callback-matchers'

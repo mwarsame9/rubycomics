@@ -1,4 +1,4 @@
-require 'spec_helper'
+require_relative 'feature_helper'
 
 context 'non logged in user' do
   it 'shows an index of comics on website' do

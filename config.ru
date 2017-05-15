@@ -1,2 +1,2 @@
 require_relative './boot'
-run Sinatra::Application
+run RubycomicsApp
