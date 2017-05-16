@@ -1,3 +1,12 @@
+body {
+  font-family: 'Francois One', sans-serif;
+  background-image: url('../img/triangular.png');
+  padding-top: 65px;
+}
+body p {
+  font-family: 'Merriweather', serif;
+}
+
 .navbar-brand-centered {
         position: absolute;
         left: 50%;
@@ -10,6 +19,8 @@
     .navbar>.container-fluid .navbar-brand-centered {
         margin-left: -80px;
     }
-.navbar-brand span {
-  color: red;
+
+.navbar-brand a {
+  /*font-family: 'Francois One', sans-serif;*/
+  color: black;
 }
