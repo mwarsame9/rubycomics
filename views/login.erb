@@ -12,15 +12,18 @@
     <option value="user">User</option>
     <option value="admin">Admin</option>
   </select>
-  <br>
+  <br><br>
   <button class="btn btn-default" type="submit">Create Account</button>
 </form>
+<hr>
+<br>
 <form action="/login" method="post">
   <div class="form-group">
     <label for="login_info[username]">Username:</label>
     <input type="text" class="form-control" name="login_info[username]">
     <label for="login_info[password]">Password:</label>
     <input type="password" class="form-control" name="login_info[password]">
+    <br>
     <button class="btn btn-default" type="submit" name="login">Log In</button>
   </div>
 </form>

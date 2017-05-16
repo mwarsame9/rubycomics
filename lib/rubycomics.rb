@@ -1,4 +1,5 @@
 require 'rubycomics/version'
+require 'bcrypt'
 
 # namespace module for Rubycomics lib
 module Rubycomics
@@ -6,9 +7,10 @@ module Rubycomics
   class User < ActiveRecord::Base
     has_many :pages
 
-    validates :username, presence: true, length: { maximum: 32, minimum: 6 }
+    validates :username, presence: true, length: { maximum: 32, minimum: 6 },
+              uniqueness: true
 
-    attr_accessor :password, :password_confirmation
+    attr_accessor :password, :password_confirmation, :password_hash
 
     def self.authenticate(username, pass)
       user = first username: username

@@ -55,4 +55,19 @@ class RubycomicsApp < Sinatra::Application
   end
 # <img src="<%= @page.page_img.url %>">
 
+  post('/login') do
+    login_info = params.fetch(:login_info)
+    login(login_info)
+  end
+
+  get('/logout', auth: :user) do
+    logout
+  end
+
+  post('/signup') do
+    signup(params.fetch(:signup))
+  end
+
 end
+
+require_relative 'helpers/authinabox'

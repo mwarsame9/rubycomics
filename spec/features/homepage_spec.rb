@@ -44,7 +44,10 @@ context 'logged in user' do
     page_count = all('.page').count
     visit '/pages/new'
     expect(page).to have_content('Add New Page')
-    fill_in 'page_img', with: File.expand_path('../assets/happy.jpg')
+    within 'form' do
+      # binding.pry
+      attach_file 'page_img', File.expand_path('spec/assets/happy.jpg')
+    end
     click_on 'Add New Page'
     expect(all('.page').count).to eq page_count + 1
   end
