@@ -1,0 +1,26 @@
+<h2>Signup</h2>
+<form class="signup" action="/signup" method="post">
+  <label for="signup[name]">Name:</label>
+  <input type="text" name="signup[name]" />
+  <label for="signup[username]">Username:</label>
+  <input type="text" name="signup[username]" />
+  <label for="signup[password]">Password:</label>
+  <input type="password" name="signup[password]" />
+  <label for="signup[password_confirmation]">Confirm Password:</label>
+  <input type="password" name="signup[password_confirmation]" />
+  <select class="role-select" name="signup[role]">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+  <br>
+  <button class="btn btn-default" type="submit">Create Account</button>
+</form>
+<form action="/login" method="post">
+  <div class="form-group">
+    <label for="login_info[username]">Username:</label>
+    <input type="text" class="form-control" name="login_info[username]">
+    <label for="login_info[password]">Password:</label>
+    <input type="password" class="form-control" name="login_info[password]">
+    <button class="btn btn-default" type="submit" name="login">Log In</button>
+  </div>
+</form>

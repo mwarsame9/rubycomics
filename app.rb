@@ -12,6 +12,15 @@ Paperclip::Attachment.default_options[:path] = Dir.pwd + '/public:url'
 Paperclip::Attachment.default_options[:url] = "/uploads/:attachment/:filename"
 
 class RubycomicsApp < Sinatra::Application
+  enable :sessions
+
+  register do
+    def auth (type)
+      condition do
+        redirect "/login" unless send("#{type}?")
+      end
+    end
+  end
 
   def params
     super.symbolize
@@ -39,6 +48,10 @@ class RubycomicsApp < Sinatra::Application
   get '/pages/:id' do |id|
     @page = Rubycomics::Page.find(id)
     erb :page
+  end
+
+  get '/login' do
+    erb :login
   end
 # <img src="<%= @page.page_img.url %>">
 

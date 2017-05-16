@@ -8,7 +8,7 @@ context 'non logged in user' do
 
   it 'gives user the option to login' do
     visit '/login'
-    expect(page).to have_content('enter username:')
+    expect(page).to have_content('Username:')
   end
 
   it 'has a login link on the main page' do
