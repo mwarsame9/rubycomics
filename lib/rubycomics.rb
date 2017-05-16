@@ -9,10 +9,11 @@ module Rubycomics
     validates :username, presence: true, length: { maximum: 32, minimum: 6 },
                          uniqueness: true
 
-    attr_accessor :password, :password_confirmation, :password_hash
+    before_save :hash_password
+    attr_accessor :password, :password_confirmation
 
     def self.authenticate(username, pass)
-      user = first username: username
+      user = self.where(username: username).first
       pw = BCrypt::Password.new(user.password_hash)
       return false unless user && pw == pass
       user
@@ -22,17 +23,16 @@ module Rubycomics
       role == :admin
     end
 
-    def password=(pass)
-      @password = pass
-      self.password_hash = BCrypt::Password.create(pass).to_s
+    def hash_password
+      self.password_hash = BCrypt::Password.create(self.password).to_s
     end
 
-    def validate
-      validates_presence %i[username password password_confirmation]
-      validates_length_range 2..32, :username
-      errors.add(:password_confirmation, 'Password must match confirmation')\
-      unless password != password_confirmation
-    end
+    # def validate
+    #   validates_presence %i[username password password_confirmation]
+    #   validates_length_range 2..32, :username
+    #   errors.add(:password_confirmation, 'Password must match confirmation')\
+    #   unless password != password_confirmation
+    # end
   end
 
   class Page < ActiveRecord::Base

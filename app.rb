@@ -12,7 +12,9 @@ Paperclip::Attachment.default_options[:path] = Dir.pwd + '/public:url'
 Paperclip::Attachment.default_options[:url] = '/uploads/:attachment/:filename'
 
 class RubycomicsApp < Sinatra::Application
-  enable :sessions
+  use Rack::Session::Cookie, :key => 'rack.session',
+                             :path => '/',
+                             :secret => 'ivegottasecret'
 
   register do
     def auth(type)
@@ -27,6 +29,7 @@ class RubycomicsApp < Sinatra::Application
   end
 
   get('/') do
+    binding.pry
     @pages = Rubycomics::Page.all
     erb(:index)
   end

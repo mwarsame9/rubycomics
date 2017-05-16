@@ -69,9 +69,10 @@ module Sinatra
           success_redirect: nil,  # Override where to redirect on success
           failure_redirect: nil,  # Override where to redirect on failure
         }.merge(options)
-        user = Rubycomics::User.new(params)
-        if user.save
+        user = Rubycomics::User.create(params)
+        if user
           session[:user] = user.id if options[:login]
+          binding.pry
           if options[:redirect]
             redirect options[:success_redirect] ||
                      settings.authinabox[:signup_redirect]
