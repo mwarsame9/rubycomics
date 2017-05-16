@@ -56,8 +56,10 @@ module Sinatra
           redirect_to: nil,       # Overrides where we redirect to
         }.merge(options)
         session[:user] = nil
-        redirect options[:redirect_to] ||
-          settings.authinabox[:logout_redirect] if options[:redirect]
+        if options[:redirect]
+          redirect options[:redirect_to] ||
+                   settings.authinabox[:logout_redirect]
+        end
       end
 
       def signup(params, options = {})
@@ -70,13 +72,17 @@ module Sinatra
         user = Rubycomics::User.new(params)
         if user.save
           session[:user] = user.id if options[:login]
-          redirect options[:success_redirect] ||
-                   settings.authinabox[:signup_redirect] if options[:redirect]
+          if options[:redirect]
+            redirect options[:success_redirect] ||
+                     settings.authinabox[:signup_redirect]
+          end
         else
           flash[:errors] = '<ul><li>' << user.errors.full_messages
-            .join('</li><li>') << '</li></ul>'
-          redirect options[:failure_redirect] ||
-            request.fullpath if options[:redirect]
+                           .join('</li><li>') << '</li></ul>'
+          if options[:redirect]
+            redirect options[:failure_redirect] ||
+                     request.fullpath
+          end
         end
         user
       end
@@ -88,8 +94,10 @@ module Sinatra
         }.merge(options)
         return true if session[:user]
         session[:login_return_to] = request.fullpath
-        redirect options[:login_url] ||
-          settings.authinabox[:login_url] if options[:redirect]
+        if options[:redirect]
+          redirect options[:login_url] ||
+                   settings.authinabox[:login_url]
+        end
         false
       end
 
@@ -102,15 +110,19 @@ module Sinatra
         }.merge(options)
         unless session[:user]
           session[:login_return_to] = request.fullpath
-          redirect options[:login_url] ||
-            settings.authinabox[:login_url] if options[:redirect]
+          if options[:redirect]
+            redirect options[:login_url] ||
+                     settings.authinabox[:login_url]
+          end
           return false
         end
         unless current_user.admin?
           flash[:errors] = options[:error_msg] if options[:error_msg]
           session[:login_return_to] = request.fullpath
-          redirect options[:login_url] ||
-            settings.authinabox[:login_url] if options[:redirect]
+          if options[:redirect]
+            redirect options[:login_url] ||
+                     settings.authinabox[:login_url]
+          end
           return false
         end
         true

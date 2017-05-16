@@ -6,10 +6,10 @@ RSpec.describe Rubycomics do
   end
 
   describe Rubycomics::User, type: :model do
-    it { should have_many :pages}
+    it { should have_many :pages }
   end
 
   describe Rubycomics::Page, type: :model do
-    it { should belong_to :user}
+    it { should belong_to :user }
   end
 end

@@ -9,15 +9,15 @@ if development?
 end
 
 Paperclip::Attachment.default_options[:path] = Dir.pwd + '/public:url'
-Paperclip::Attachment.default_options[:url] = "/uploads/:attachment/:filename"
+Paperclip::Attachment.default_options[:url] = '/uploads/:attachment/:filename'
 
 class RubycomicsApp < Sinatra::Application
   enable :sessions
 
   register do
-    def auth (type)
+    def auth(type)
       condition do
-        redirect "/login" unless send("#{type}?")
+        redirect '/login' unless send("#{type}?")
       end
     end
   end
@@ -53,7 +53,7 @@ class RubycomicsApp < Sinatra::Application
   get '/login' do
     erb :login
   end
-# <img src="<%= @page.page_img.url %>">
+  # <img src="<%= @page.page_img.url %>">
 
   post('/login') do
     login_info = params.fetch(:login_info)
@@ -67,7 +67,6 @@ class RubycomicsApp < Sinatra::Application
   post('/signup') do
     signup(params.fetch(:signup))
   end
-
 end
 
 require_relative 'helpers/authinabox'

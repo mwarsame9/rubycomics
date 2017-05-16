@@ -3,12 +3,11 @@ require 'bcrypt'
 
 # namespace module for Rubycomics lib
 module Rubycomics
-
   class User < ActiveRecord::Base
     has_many :pages
 
     validates :username, presence: true, length: { maximum: 32, minimum: 6 },
-              uniqueness: true
+                         uniqueness: true
 
     attr_accessor :password, :password_confirmation, :password_hash
 
@@ -43,11 +42,11 @@ module Rubycomics
     validates_attachment :page_img, content_type: { content_type: /\Aimage\/.*\Z/ }
 
     def next
-      self.class.where("id > ?", id).first
+      self.class.where('id > ?', id).first
     end
 
     def previous
-      self.class.where("id < ?", id).last
+      self.class.where('id < ?', id).last
     end
 
     def first
@@ -58,7 +57,6 @@ module Rubycomics
       self.class.last
     end
   end
-
 end
 
 # Adds a method to the Hash class.
