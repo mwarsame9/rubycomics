@@ -12,6 +12,22 @@ module Rubycomics
     include ::Paperclip::Glue
     has_attached_file(:page_img)
     validates_attachment :page_img, content_type: { content_type: /\Aimage\/.*\Z/ }
+
+    def next
+      self.class.where("id > ?", id).first
+    end
+
+    def previous
+      self.class.where("id < ?", id).last
+    end
+
+    def first
+      self.class.first
+    end
+
+    def last
+      self.class.last
+    end
   end
 
 end

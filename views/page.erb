@@ -1,0 +1,31 @@
+<div id="page">
+  <div class="nav row">
+    <a href="/pages/<%= @page.first.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+    </a>
+    <a href="/pages/<%= @page.previous&.id || @page.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+    </a>
+    <a href="/pages/<%= @page.next&.id || @page.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+    </a>
+    <a href="/pages/<%= @page.last.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+    </a>
+  </div>
+  <a href="/pages/<%= @page.next&.id || @page.id %>"><img id="page" src="<%= @page.page_img.url %>" alt="comic page"></a>
+  <div class="nav row">
+    <a href="/pages/<%= @page.first.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+    </a>
+    <a href="/pages/<%= @page.previous&.id || @page.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+    </a>
+    <a href="/pages/<%= @page.next&.id || @page.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+    </a>
+    <a href="/pages/<%= @page.last&.id %>" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>

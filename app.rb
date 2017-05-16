@@ -19,7 +19,6 @@ class RubycomicsApp < Sinatra::Application
 
   get('/') do
     @pages = Rubycomics::Page.all
-
     erb(:index)
   end
 
@@ -37,6 +36,10 @@ class RubycomicsApp < Sinatra::Application
     redirect '/'
   end
 
+  get '/pages/:id' do |id|
+    @page = Rubycomics::Page.find(id)
+    erb :page
+  end
 # <img src="<%= @page.page_img.url %>">
 
 end

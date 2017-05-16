@@ -18,7 +18,7 @@ context 'non logged in user' do
 
   it 'allows user to view individual pages of a comic' do
     visit '/'
-    all('.page').first click_on
+    first('.page > a').click
     expect(page).to have_selector('#page')
   end
 end
