@@ -29,7 +29,6 @@ class RubycomicsApp < Sinatra::Application
   end
 
   get('/') do
-    binding.pry
     @pages = Rubycomics::Page.all
     erb(:index)
   end

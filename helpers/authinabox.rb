@@ -72,7 +72,6 @@ module Sinatra
         user = Rubycomics::User.create(params)
         if user
           session[:user] = user.id if options[:login]
-          binding.pry
           if options[:redirect]
             redirect options[:success_redirect] ||
                      settings.authinabox[:signup_redirect]

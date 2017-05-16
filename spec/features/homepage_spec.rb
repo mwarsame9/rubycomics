@@ -45,7 +45,6 @@ context 'logged in user' do
     visit '/pages/new'
     expect(page).to have_content('Add New Page')
     within 'form' do
-      # binding.pry
       attach_file 'page_img', File.expand_path('spec/assets/happy.jpg')
     end
     click_on 'Add New Page'
