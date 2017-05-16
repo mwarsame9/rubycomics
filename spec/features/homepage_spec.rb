@@ -13,7 +13,7 @@ context 'non logged in user' do
 
   it 'has a login link on the main page' do
     visit '/'
-    expect(page).to have_content('login')
+    expect(page).to have_content('Login')
   end
 
   it 'allows user to view individual pages of a comic' do
