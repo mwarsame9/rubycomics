@@ -29,7 +29,7 @@ context 'logged in user' do
   end
   it 'shows an index of comics on website' do
     visit '/'
-    expect(page).to have_content('All Comics')
+    expect(page).to have_content('All Pages')
   end
 
   it 'shows page menu on layout' do
