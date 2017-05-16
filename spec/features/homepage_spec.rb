@@ -25,7 +25,8 @@ end
 
 context 'logged in user' do
   before(:all) do
-    # login user
+    register_user('Frodo Baggins', 'frodolives', 'th30n3r1ng')
+    # log_in_user('frodolives', 'th30n3r1ng')
   end
   it 'shows an index of comics on website' do
     visit '/'
