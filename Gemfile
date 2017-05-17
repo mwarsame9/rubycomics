@@ -9,6 +9,7 @@ gem 'pg'
 gem 'pry'
 gem 'pry-byebug'
 gem 'rake'
+gem 'rspec'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'sinatra-flash'
@@ -19,7 +20,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'rspec'
   gem 'shoulda-callback-matchers'
   gem 'shoulda-matchers'
   gem 'timecop'
