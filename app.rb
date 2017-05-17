@@ -91,6 +91,18 @@ class RubycomicsApp < Sinatra::Application
     redirect back
   end
 
+  post '/pages/:id/comments' do |id|
+    new_comment = params.fetch(:comment)
+    new_comment[:page_id] = p_id
+    Rubycomics::Comment.create(new_comment)
+    redirect '/pages/' + id
+  end
+
+  get '/pages/:p_id/comments/:c_id/delete', auth: :user do |p_id, c_id|
+    Rubycomics::Comment.delete(c_id)
+    redirect '/pages' + p_id
+  end
+
   get '/login' do
     erb :login
   end

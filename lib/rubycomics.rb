@@ -37,6 +37,7 @@ module Rubycomics
 
   class Page < ActiveRecord::Base
     belongs_to :user
+    has_many :comments
     include ::Paperclip::Glue
     has_attached_file(:page_img)
     validates_attachment :page_img, content_type: { content_type: /\Aimage\/.*\Z/ }
@@ -56,6 +57,10 @@ module Rubycomics
     def last
       self.class.last
     end
+  end
+
+  class Comment < ActiveRecord::Base
+    belongs_to :page
   end
 end
 
