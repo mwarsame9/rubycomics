@@ -6,10 +6,12 @@
         <a href="/pages/<%= page.id %>">
           <img src="<%= page.page_img.url %>" alt="comic page" class="img-thumbnail" >
         </a>
+        <%if current_user %>
         <div class="caption">
           <a href="/pages/<%= page.id %>/edit" class="btn btn-primary edit-button">Edit Page</a>
           <a href="/pages/<%= page.id %>/delete" class="btn btn-warning delete-button">Delete Page</a>
         </div>
+        <% end %>
       </li>
     <% end %>
   </ul>
