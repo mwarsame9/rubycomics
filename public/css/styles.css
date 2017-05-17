@@ -13,7 +13,6 @@ body p {
         display: block;
         width: 160px;
         text-align: center;
-        background-color: transparent;
     }
     .navbar>.container .navbar-brand-centered,
     .navbar>.container-fluid .navbar-brand-centered {
@@ -23,4 +22,8 @@ body p {
 .navbar-brand a {
   /*font-family: 'Francois One', sans-serif;*/
   color: black;
+}
+
+.page-list {
+  list-style-type: none;
 }
