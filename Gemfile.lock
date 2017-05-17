@@ -129,7 +129,7 @@ DEPENDENCIES
   pg
   pry
   pry-byebug
-  rake (~> 10.0)
+  rake
   rspec
   rubycomics!
   shoulda-callback-matchers
