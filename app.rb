@@ -33,11 +33,11 @@ class RubycomicsApp < Sinatra::Application
     erb(:index)
   end
 
-  get '/pages/new' do
+  get '/pages/new', auth: :user do
     erb :new_page
   end
 
-  post '/pages/new' do
+  post '/pages/new', auth: :user do
     newpage = Rubycomics::Page.new user_id: current_user.id
     newpage.page_img = params.dig(:page_img, :tempfile)
     newpage.page_img_file_name = params.dig(:page_img, :filename)
@@ -46,12 +46,12 @@ class RubycomicsApp < Sinatra::Application
     redirect '/'
   end
 
-  get '/pages/:id/edit' do |id|
+  get '/pages/:id/edit', auth: :user do |id|
     @page = Rubycomics::Page.find(id)
     erb :page_edit
   end
 
-  patch '/pages/:id' do |id|
+  patch '/pages/:id', auth: :user do |id|
     page = Rubycomics::Page.find(id)
     page.user_id = current_user.id
     page.page_img = params.dig :page_img, :tempfile
@@ -60,9 +60,14 @@ class RubycomicsApp < Sinatra::Application
     redirect back
   end
 
-  get '/pages/:id/delete' do |id|
+  get '/pages/:id/delete', auth: :user do |id|
     Rubycomics::Page.delete(id)
     redirect '/'
+  end
+
+  get '/users/:id/delete', auth: :admin do |id|
+    Rubycomics::User.delete(id)
+    redirect '/users'
   end
 
   get '/pages/:id' do |id|
@@ -70,10 +75,26 @@ class RubycomicsApp < Sinatra::Application
     erb :page
   end
 
+  get '/users', auth: :admin do
+    @users = Rubycomics::User.all
+    erb :users
+  end
+
+  get '/users/:id/edit', auth: :admin do |id|
+    @user = Rubycomics::User.find(id)
+    erb :user_edit
+  end
+
+  patch '/users/:id/edit', auth: :admin do |id|
+    new_data = params.fetch(:user).delete_if {|key, value| value.blank? }
+    Rubycomics::User.update id, new_data
+    redirect back
+  end
+
   get '/login' do
     erb :login
   end
-  # <img src="<%= @page.page_img.url %>">
+
 
   post('/login') do
     login_info = params.fetch(:login_info)

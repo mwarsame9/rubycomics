@@ -21,6 +21,12 @@ module RubycomicsHelper
     fill_in 'login_info[password]', with: password
     click_on 'Log In'
   end
+
+  def create_page
+    newpage = Rubycomics::Page.new user_id: '1'
+    newpage.page_img_file_name = File.expand_path('spec/assets/happy.jpg')
+    newpage.save
+  end
 end
 
 RSpec.configure do |c|

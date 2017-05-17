@@ -1,0 +1,18 @@
+<h1>List of registered users</h1>
+<% @users.each() do |user| %>
+<div class="panel">
+  <div class="panel-heading">
+    <div class="panel-title"><p>
+      <%= user.name %>
+    </p>
+
+    <div class="panel-body">
+      <p>Role: <%=user.role=%></p>
+      <p>Username: <%=user.username %></p>
+      <a class="btn btn-info" href="/users/<%= user.id%>/edit">Edit User</a>
+      <a class="btn btn-warning" href="/users/<%= user.id%>/delete">Delete User</a>
+    </div>
+  </div>
+</div>
+</div>
+<%end%>

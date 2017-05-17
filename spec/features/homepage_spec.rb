@@ -17,6 +17,8 @@ context 'non logged in user' do
   end
 
   it 'allows user to view individual pages of a comic' do
+    # binding.pry
+    create_page
     visit '/'
     first('.page > a').click
     expect(page).to have_selector('#page')
@@ -26,7 +28,7 @@ end
 context 'logged in user' do
   before(:all) do
     register_user('Frodo Baggins', 'frodolives', 'th30n3r1ng')
-    # log_in_user('frodolives', 'th30n3r1ng')
+    log_in_user('frodolives', 'th30n3r1ng')
   end
   it 'shows an index of comics on website' do
     visit '/'
@@ -44,6 +46,7 @@ context 'logged in user' do
     visit '/'
     page_count = all('.page').count
     visit '/pages/new'
+    # binding.pry
     expect(page).to have_content('Add New Page')
     within 'form' do
       attach_file 'page_img', File.expand_path('spec/assets/happy.jpg')

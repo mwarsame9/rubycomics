@@ -1,0 +1,33 @@
+<div class="panel">
+  <div class="panel-heading">
+    <div class="panel-title"><p>
+      <%= @user.name %>
+    </p>
+
+    <div class="panel-body">
+      <p>Username: <%=@user.username %></p>
+      <p>Role: <%=@user.role=%></p>
+    </div>
+  </div>
+</div>
+</div>
+
+<form class="user" action="/users/<%=@user.id %>/edit" method="post">
+  <input type="hidden" name="_method" value="patch" />
+  <label for="user[name]">Name</label>
+  <input type="text" name="user[name]" />
+  <label for="user[username]">Username</label>
+  <input type="text" name="user[username]" />
+  <label for="user[password]">Password</label>
+  <input type="password" name="user[password]" />
+  <label for="user[password_confirmation]">Confirm Password</label>
+  <input type="password" name="user[password_confirmation]" />
+  <select class="role-select" name="user[role]">
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+  <br><br>
+  <button class="btn btn-info" type="submit">Edit User</button>
+</form>
+
+<a class="btn btn-warning" href="/users/<%= @user.id%>/delete">Delete User</a>

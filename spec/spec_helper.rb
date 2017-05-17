@@ -5,6 +5,10 @@ require 'shoulda-callback-matchers'
 require 'capybara'
 require 'timecop'
 
+ActiveRecord::Base.establish_connection(
+  :adapter  => "postgresql",
+  :database => "rubycomics_test")
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'

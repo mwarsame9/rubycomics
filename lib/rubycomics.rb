@@ -20,7 +20,7 @@ module Rubycomics
     end
 
     def admin?
-      role == :admin
+      role == "admin"
     end
 
     def hash_password
