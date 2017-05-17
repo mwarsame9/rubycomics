@@ -8,7 +8,7 @@ context 'non logged in user' do
 
   it 'gives user the option to login' do
     visit '/login'
-    expect(page).to have_content('Username:')
+    expect(page).to have_content('Username')
   end
 
   it 'has a login link on the main page' do
@@ -50,5 +50,13 @@ context 'logged in user' do
     end
     click_on 'Add New Page'
     expect(all('.page').count).to eq page_count + 1
+  end
+
+  it 'allows user to delete comics' do
+    visit '/'
+    page_count = all('.page').count
+    expect(page).to have_content('Delete Page')
+    first('.delete-button').click
+    expect(all('.page').count).to eq page_count - 1
   end
 end

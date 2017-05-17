@@ -11,15 +11,15 @@ module RubycomicsHelper
     fill_in 'signup[name]', with: name
     fill_in 'signup[username]', with: username
     fill_in 'signup[password]', with: password
-    fill_in 'signup[confirm_password]', with: password
-    click 'Create Account'
+    fill_in 'signup[password_confirmation]', with: password
+    click_on 'Create Account'
   end
 
   def log_in_user(username, password)
     visit '/login'
     fill_in 'login_info[username]', with: username
     fill_in 'login_info[password]', with: password
-    click 'Log In'
+    click_on 'Log In'
   end
 end
 
