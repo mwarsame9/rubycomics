@@ -38,12 +38,30 @@ class RubycomicsApp < Sinatra::Application
   end
 
   post '/pages/new' do
-    pagedata = params.fetch :page
-    newpage = Rubycomics::Page.new(pagedata)
+    newpage = Rubycomics::Page.new user_id: current_user.id
     newpage.page_img = params.dig(:page_img, :tempfile)
     newpage.page_img_file_name = params.dig(:page_img, :filename)
 
     newpage.save
+    redirect '/'
+  end
+
+  get '/pages/:id/edit' do |id|
+    @page = Rubycomics::Page.find(id)
+    erb :page_edit
+  end
+
+  patch '/pages/:id' do |id|
+    page = Rubycomics::Page.find(id)
+    page.user_id = current_user.id
+    page.page_img = params.dig :page_img, :tempfile
+    page.page_img_file_name = params.dig :page_img, :filename
+    page.save
+    redirect back
+  end
+
+  get '/pages/:id/delete' do |id|
+    Rubycomics::Page.delete(id)
     redirect '/'
   end
 

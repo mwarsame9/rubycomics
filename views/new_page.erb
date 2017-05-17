@@ -1,8 +1,6 @@
 <form class="add" action="/pages/new" method="post" enctype="multipart/form-data">
   <label for="page_img">Page</label>
   <input id="page_img" type="file" name="page_img">
-  <!-- TODO: change this to not be hardcoded -->
-  <input type="hidden" name="page[user_id]" value="1" />
   <button type="submit">Add New Page</button>
 </form>
 
@@ -12,8 +10,12 @@ How bracket-notated fields work:
 
 "page[id]"
 {:page => {:id => 1}}
+which can be written as
+page: {id: 1}
+
 
 "page[][id]"
 {:page => [{:id => 1}, {:id => 2}]}
+page: [id: 1, id: 2]
 
 -->

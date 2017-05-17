@@ -1,9 +1,15 @@
-<h1>test</h1>
-
 <h3>All Pages</h3>
-  <ul>
+  <ul class="page-list">
     <% @pages.each() do |page| %>
     <!-- TODO: change this to a thumbnail later -->
-      <li class="page"><a href="/pages/<%= page.id %>"><img src="<%= page.page_img.url %>" alt="comic page" class="img-thumbnail" width="50" height="40"></a></li>
+      <li class="page col-xs-6 col-md-3 thumbnail">
+        <a href="/pages/<%= page.id %>">
+          <img src="<%= page.page_img.url %>" alt="comic page" class="img-thumbnail" >
+        </a>
+        <div class="caption">
+          <a href="/pages/<%= page.id %>/edit" class="btn btn-primary edit-button">Edit Page</a>
+          <a href="/pages/<%= page.id %>/delete" class="btn btn-warning delete-button">Delete Page</a>
+        </div>
+      </li>
     <% end %>
   </ul>

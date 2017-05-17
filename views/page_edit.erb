@@ -1,0 +1,8 @@
+<img src="<%= @page.page_img.url %>" alt="comic page" class="thumbnail" >
+<form class="edit" action="/pages/<%=@page.id%>" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="_method" value="patch" />
+  <label for="page_img">Page</label>
+  <input id="page_img" type="file" name="page_img">
+  <button type="submit">Edit Page</button>
+</form>
+<a href="/pages/<%= @page.id %>/delete" class="btn btn-warning delete-button">Delete Page</a>
