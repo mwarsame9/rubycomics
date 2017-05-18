@@ -1,8 +1,7 @@
 # Rubycomics
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rubycomics`. To experiment with that code, run `bin/console` for an interactive prompt.
+Web comics using Ruby. This application allows users to view comics as guest users or view, create, delete and update as a registered user. When registering, user must provide name, username and password.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -22,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Open up the application in your browser. As guest user, click on thumbnails to open and view each page. You can also create an account which allows you to add, delete, and update comic pages.
 
 ## Development
 
@@ -30,7 +29,11 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-## Contributing
+## Contributors
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rubycomics.
+Kai Leahy
+Mohamed Warsame
 
+## License
+
+Licensed MIT 2017
